@@ -106,5 +106,10 @@ export class PostsComponent implements OnInit {
       });
     }
   }
+  
+  closeAlert(){
+    this.postDeleted = false;
+    this.postCreated = false;
+  }
 
 }
