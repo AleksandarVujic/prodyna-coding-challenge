@@ -1,9 +1,6 @@
 <div class="container">
-    <div *ngIf="postCreated" class="alert alert-success text-center mt-2" role="alert">
-        New Post successfuly created.
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert()">
-            <span aria-hidden="true">&times;</span>
-        </button>
+    <div class="mt-2" *ngIf="postCreated">
+      <alert type="success" dismissOnTimeout="3000" (onClosed)="closeAlert()" class="text-center">New Post successfuly created.</alert>
     </div>
     <div class="card mt-3">
         <div class="card-header">
@@ -59,11 +56,8 @@
     </div>
     <div class="card mt-3">
         <div class="card-body">
-            <div *ngIf="postDeleted" class="alert alert-danger text-center" role="alert">
-                Post successfuly deleted.
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert()">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+            <div *ngIf="postDeleted">
+              <alert type="danger" dismissOnTimeout="3000" (onClosed)="closeAlert()" class="text-center">Post successfuly deleted</alert>
             </div>
             <div class="row">
                 <div class="col-12">
