@@ -1,0 +1,39 @@
+<nav class="sidenav" [ngStyle]="{'width': width + 'px'}">
+    <div class="sidenav-header">
+        <img *ngIf='!toggleBtn' src="assets\images\layout_set_logo.png" alt="PRODYNA">
+        <a href="javascript:void(0)" class="changeButton" (click)="toggleNav()">
+            <i class="fa fa-exchange"></i>
+        </a>
+    </div>
+    <div *ngIf='!toggleBtn' class="list-bar">
+        <ul>
+            <li>
+                <a routerLinkActive="active" routerLink="" [routerLinkActiveOptions]="{exact: true}">
+                    <i class="fa fa-home"></i>HOME</a>
+            </li>
+            <li>
+                <a routerLinkActive="active" routerLink="/posts">
+                    <i class="fa fa-list-alt"></i>POSTS</a>
+            </li>
+            <li>
+                <a routerLinkActive="active" routerLink="/users">
+                    <i class="fa fa-user"></i>USERS</a>
+            </li>
+            <li>
+                <a routerLinkActive="active" routerLink="/about">
+                    <i class="fa fa-commenting"></i>ABOUT</a>
+            </li>
+        </ul>
+    </div>
+    <div class="icon-bar" *ngIf=toggleBtn>
+        <a routerLinkActive="active" routerLink="" [routerLinkActiveOptions]="{exact: true}"><i
+                class="fa fa-home"></i></a>
+        <a routerLinkActive="active" routerLink="/posts"><i class="fa fa-list-alt"></i></a>
+        <a routerLinkActive="active" routerLink="/users"><i class="fa fa-user"></i></a>
+        <a routerLinkActive="active" routerLink="/about"><i class="fa fa-commenting"></i></a>
+    </div>
+</nav>
+<div [ngStyle]="{'margin-left': marginLeft + 'px'}" id="main">
+    <header-prodyna></header-prodyna>
+    <router-outlet></router-outlet>
+</div>

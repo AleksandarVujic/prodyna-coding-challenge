@@ -1,0 +1,106 @@
+<div class="container">
+    <div *ngIf="postCreated" class="alert alert-success text-center mt-2" role="alert">
+        New Post successfuly created.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="card mt-3">
+        <div class="card-header">
+            <h6><i class="fa fa-plus"></i>Add New Post</h6>
+        </div>
+        <div class="card-body">
+            <form (ngSubmit)="createPost(postForm)" #postForm="ngForm">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="title" class="mt-2 font-weight-bold">Post Title</label>
+                        </div>
+                        <div class="col-6">
+                            <input ngModel type="text" #title="ngModel" class="form-control" name="title" id="title"
+                                placeholder="Enter post title" required />
+                            <div *ngIf="!title.valid && title.touched">
+                                <small class="text-danger ml-2">Post title is required</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="postBody" class="font-weight-bold">Post Body</label>
+                        </div>
+                        <div class="col-6">
+                            <textarea ngModel #body="ngModel" name="body" class="form-control" id="postBody" rows="3"
+                                placeholder="Enter post body" required></textarea>
+                            <div *ngIf="!body.valid && body.touched">
+                                <small class="text-danger ml-2">Post body is required</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="userId" class="font-weight-bold">User ID</label>
+                        </div>
+                        <div class="col-6">
+                            <input type="number" name="userId" id="userId" ngModel class="form-control"
+                                placeholder="Enter User ID">
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <button type="submit" [disabled]='!postForm.valid' class="btn btn-primary not-allowed"><i
+                        class="fa fa-plus"></i>
+                    Create post</button>
+            </form>
+        </div>
+    </div>
+    <div class="card mt-3">
+        <div class="card-body">
+            <div *ngIf="postDeleted" class="alert alert-danger text-center" role="alert">
+                Post successfuly deleted.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-search"></i></span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Search..." name="postsTitleFilter"
+                            [(ngModel)]="postsTitleFilter">
+                    </div>
+                </div>
+            </div>
+            <div class="posts-list" (scroll)="infiniteScroll($event)">
+                <ng-container>
+                    <div class="card mb-2 mt-2"
+                        *ngFor="let post of posts | postsFilter:postsTitleFilter; let indx of index">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-10">
+                                    <h5 class="text-center">{{post.title}}</h5>
+                                </div>
+                                <div class="col-2">
+                                    <button class="btn btn btn-info pull-right" (click)="toggleBody(indx)">
+                                        <i class="fa fa-refresh"></i>
+                                    </button>
+                                    <button class="btn btn-danger pull-right" (click)="deletePost(indx, post.id)">
+                                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="body" *ngIf="visible === indx">
+                            <p class="text-justify px-2 py-2">{{post.body}}</p>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>

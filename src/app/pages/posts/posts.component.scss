@@ -1,0 +1,12 @@
+.form-control.ng-touched.ng-invalid {
+  border: 2px solid red;
+}
+
+.not-allowed:disabled {
+  cursor: not-allowed;
+}
+
+.posts-list{
+  height: 700px;
+  overflow: auto;
+}

@@ -1,0 +1,103 @@
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #2d3e63;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 25px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #b2bfdc;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav .active{
+  color: #ffffff;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .changeButton {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.list-bar{
+  padding-top: 50px;
+}
+
+.list-bar ul {
+  padding-left: 0;
+}
+
+.list-bar ul li {
+  list-style-type: none;
+}
+
+.list-bar ul li i {
+  float: right;
+  padding-right: 25px;
+  margin-top: 7px;
+}
+
+.sidenav-header{
+  display: flex;
+}
+
+.sidenav-header img{
+  margin-left: 15px;
+  width: 140px;
+  height: 30px;
+}
+
+#main {
+  transition: margin-left 0.5s;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
+}
+
+.icon-bar {
+  width: 90px;
+  transition: all 0.3s ease;
+  padding-top: 50px;
+}
+
+.icon-bar a {
+  display: block;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 5px;
+  transition: all 0.3s ease;
+  color: #fff;
+  font-size: 30px;
+}
+
+.icon-bar a:hover {
+  background-color: #128a02;
+}
+
+.active {
+  background-color: #4caf50;
+}
