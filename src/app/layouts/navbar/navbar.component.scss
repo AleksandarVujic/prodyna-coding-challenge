@@ -38,6 +38,7 @@
 
 .list-bar{
   padding-top: 50px;
+  animation: fadein 2s;
 }
 
 .list-bar ul {
@@ -62,6 +63,7 @@
   margin-left: 15px;
   width: 140px;
   height: 30px;
+  animation: fadein 2s;
 }
 
 #main {
@@ -81,6 +83,7 @@
   width: 90px;
   transition: all 0.3s ease;
   padding-top: 50px;
+  animation: fadein 2s;
 }
 
 .icon-bar a {
@@ -100,4 +103,9 @@
 
 .active {
   background-color: #4caf50;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
